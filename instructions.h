@@ -17,4 +17,6 @@ uint8_t *op_emit(uint8_t *ip, STACK *s);
 uint8_t *op_push_int(uint8_t *ip, STACK *s);
 uint8_t *op_add(uint8_t *ip, STACK *s);
 
+uint8_t *next_operation_index(uint8_t *ip);
+
 #endif //VM_INSTRUCTIONS_H
