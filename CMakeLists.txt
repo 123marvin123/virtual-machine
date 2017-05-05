@@ -3,5 +3,5 @@ project(vm)
 
 set(CMAKE_C_STANDARD 11)
 
-set(SOURCE_FILES main.c stack.c stack.h object.h instructions.c instructions.h)
+set(SOURCE_FILES main.c stack.c stack.h object.h instructions.c instructions.h utils.c utils.h)
 add_executable(vm ${SOURCE_FILES})

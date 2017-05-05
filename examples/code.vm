@@ -1,10 +1,17 @@
-p 5
-p 3
-p 8
-a 3
-e
-p 1
-p 2
-a 2
-e
-h
+p 5     # Push 5 to Stack
+p 3     # Push 3 to Stack
+p 8     # Push 8 to Stack
+a 3     # Add the last 3 objects via (+) operation
+e       # Print the last stack object
+
+p 1     # Push 1 to Stack
+p 2     # Push 2 to Stack
+a 2     # Add the last 2 objects via (+) operation
+e       # Print the last stack object
+
+p 5     # Push 5 to Stack
+p 5     # Push 5 to Stack
+m 2     # Multiplicate the last 2 objects via (*) operation
+e       # Print the last stack object
+
+h       # Halt the program

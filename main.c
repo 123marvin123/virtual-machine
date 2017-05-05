@@ -2,9 +2,7 @@
 #include <stdio.h>
 #include <sys/stat.h>
 #include "stack.h"
-#include "instructions.h"
-
-typedef uint8_t* (*instruction)(uint8_t *, STACK *);
+#include "utils.h"
 
 void usage() {
     printf("usage: vm <file>\n");
@@ -34,23 +32,17 @@ int main(int argc, char** argv) {
     uint8_t *code;
     uint8_t *ip;
     STACK data;
-    instruction ops[256];
-
-    for(int i = 0;i < 12; i++) {
-        ops[i] = op_nop;
-    }
-
-    ops['c'] = op_push_char;
-    ops['e'] = op_emit;
-    ops['p'] = op_push_int;
-    ops['a'] = op_add;
 
     code = load_file(argv[1]);
     data = stack_new(1024);
     ip = code;
 
     while (*ip != 'h') {
-        ip = ops[*ip](ip, &data);
+        int idx = find_opcode_index(*ip);
+        if(idx != -1) {
+            OPCODE opcode = operations[idx];
+            ip = opcode.instr(ip, &data);       // Execute instruction
+        } else ip += 1;
     }
 
     return EXIT_SUCCESS;
